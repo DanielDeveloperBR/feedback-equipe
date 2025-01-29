@@ -1,0 +1,8 @@
+button, a{
+    background-color: var(--botao);
+    color: black;
+}
+h3,h2{
+    color: var(--textoSecund);
+    text-align: center;
+}

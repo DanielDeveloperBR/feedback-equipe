@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --fundo: #E0FFEF;
+    --navegacaoFundo: #1A5C3A;
+    --textoLink: #ADFFD5;
+    --textSecund: #76F5B3;
+    --fundoSecund: #0B904B;
+}
+
+body{
+    background-color: var(--fundo);
+}

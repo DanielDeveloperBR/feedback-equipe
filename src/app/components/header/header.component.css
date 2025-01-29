@@ -1,0 +1,7 @@
+.headerColor{
+    background-color: var(--navegacaoFundo);
+}
+
+a{
+    color: var(--textoLink);
+}
