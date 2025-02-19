@@ -1,1 +1,9 @@
-<p>login works!</p>
+<app-form 
+  [formGroup]="loginForm" 
+  [fields]="{email: {type: 'text', label: 'Email', placeholder: 'Digite seu email'}, senha: {type: 'password', label: 'Senha', placeholder: 'Digite sua senha'}}"
+  submitButtonText="Login"
+  (submitEvent)="handleFormSubmit()">
+</app-form>
+<a class="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-full text-x3 mx-auto mb-3" style="max-width: 400px;" href="/home">Voltar para o home</a>
+<a class="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-full text-x3 mx-auto" style="max-width: 400px;" href="/cadastro">Cadastrar-se</a>
+  

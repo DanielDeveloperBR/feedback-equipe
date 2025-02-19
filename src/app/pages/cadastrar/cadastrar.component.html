@@ -1,0 +1,13 @@
+<app-form [formGroup]="registerForm" [fields]="
+{
+  nome: {type: 'text', label: 'Nome', placeholder: 'Digite seu nome'},
+  senha: {type: 'password', label: 'Senha', placeholder: 'Digite sua senha'},
+  email: {type: 'email', label: 'Email', placeholder: 'Digite seu email'}
+}" submitButtonText="Cadastrar" (submitEvent)="handleFormSubmit()">
+</app-form>
+
+
+<a class="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-full text-x3 mx-auto"
+  style="max-width: 400px;" href="/home">
+  Voltar para o home
+</a>
