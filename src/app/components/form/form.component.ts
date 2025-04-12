@@ -12,7 +12,7 @@ export class FormComponent implements OnInit {
   @Input() formTitle: string = '';  
   @Input() fields: { [key: string]: { type: string, label: string, placeholder: string } } = {};  
   @Input() submitButtonText: string = '';  
-  @Input() formGroup!: FormGroup; // Receber o form do CadastrarComponent
+  @Input() formGroup!: FormGroup;
   @Output() submitEvent = new EventEmitter<void>(); 
 
   ngOnInit() {

@@ -1,27 +1,41 @@
-<!-- Header -->
 <header class="container-fluid headerColor text-white py-6 px-8">
-  <div class="flex justify-between items-center max-w-screen-xl mx-auto">
-      <!-- Logo -->
-      <a href=""><img src="logo.png" alt="Logo da Plataforma" class="text-center"></a>
+    <div class="flex justify-between items-center max-w-screen-xl mx-auto">
+        <!-- Logo -->
+        <a *ngIf="!isLoggedIn()" href="">
+            <img src="logo.png" alt="Logo da Plataforma" class="text-center">
+        </a>
+        <a *ngIf="isLoggedIn()" routerLink="/dashboard"
+            class="bg-green-600 text-white py-2 px-4 rounded-md">Dashboard</a>
 
-      <!-- Botões de Login e Cadastro (Visíveis em telas grandes) -->
-      <div class="hidden md:flex justify-center items-center space-x-4">
-          <a href="/login" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md">Login</a>
-          <a href="/cadastro" class="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded-md">Cadastrar</a>
-      </div>
-      
+        <!-- Botões LOGIN / CADASTRAR no desktop -->
+        <div *ngIf="!isLoggedIn(); else loggedIn" class="hidden md:flex gap-2">
+            <a routerLink="/login" class="bg-blue-600 text-white py-2 px-4 rounded-md">Login</a>
+            <a routerLink="/cadastro" class="bg-yellow-500 text-white py-2 px-4 rounded-md">Cadastrar</a>
+        </div>
 
-      <!-- Hamburger Icon (Visível em telas pequenas) -->
-      <button class="md:hidden text-white" (click)="toggleMenu()">
-          <span class="block w-6 h-0.5 bg-white mb-2"></span>
-          <span class="block w-6 h-0.5 bg-white mb-2"></span>
-          <span class="block w-6 h-0.5 bg-white"></span>
-      </button>
-  </div>
+        <!-- Botões quando logado no desktop -->
+        <ng-template #loggedIn>
+            <div class="hidden md:flex gap-2">
 
-  <!-- Mobile Menu (Hidden by default, will appear when hamburger is clicked) -->
-  <div *ngIf="isMenuOpen" class="md:hidden headerColor link-texto py-4 px-8 space-y-4 flex flex-col items-center">
-      <a href="/login"  class="block py-2 border-b border-white w-full text-center text-info ">Login</a>
-      <a href="/cadastro" class="block py-2 border-b border-white w-full text-center">Cadastrar</a>
-  </div>
+                <button (click)="logout()" class="bg-red-600 text-white py-2 px-4 rounded-md">Sair</button>
+            </div>
+        </ng-template>
+
+        <!-- Hamburger Icon (Visível em telas pequenas) -->
+        <button class="md:hidden text-white" (click)="toggleMenu()">
+            <span class="block w-6 h-0.5 bg-white mb-2"></span>
+            <span class="block w-6 h-0.5 bg-white mb-2"></span>
+            <span class="block w-6 h-0.5 bg-white"></span>
+        </button>
+    </div>
+    <div *ngIf="isMenuOpen && isLoggedIn()" class="md:hidden headerColor link-texto py-4 px-8 space-y-4 flex flex-col items-center">
+        <button (click)="logout()" class="block py-2 border-b border-white w-full text-center text-info ">Sair</button>
+    </div>
+    <div *ngIf="isMenuOpen && !isLoggedIn()" #!loggedIn
+        class="md:hidden headerColor link-texto py-4 px-8 space-y-4 flex flex-col items-center">
+        <a href="/login" class="block py-2 border-b border-white w-full text-center text-info ">Login</a>
+        <a href="/cadastro" class="block py-2 border-b border-white w-full text-center">Cadastrar</a>
+    </div>
+
+
 </header>

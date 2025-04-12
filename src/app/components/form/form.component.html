@@ -1,14 +1,14 @@
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form-container">
   <h2>{{ formTitle }}</h2>
-  
+
   <div *ngFor="let fieldKey of objectKeys(fields)" class="form-group">
     <label for="{{ fieldKey }}">{{ fields[fieldKey].label }}</label>
-    <input 
-      [id]="fieldKey"
-      [type]="fields[fieldKey].type"
-      [placeholder]="fields[fieldKey].placeholder"
+    <input [id]="fieldKey"
+     [type]="fields[fieldKey].type"
+     [placeholder]="fields[fieldKey].placeholder"
+    
       formControlName="{{ fieldKey }}" />
   </div>
-  
+
   <button type="submit" class="submit-btn">{{ submitButtonText }}</button>
 </form>
