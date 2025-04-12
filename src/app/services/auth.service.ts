@@ -31,6 +31,10 @@ export class AuthService {
     sessionStorage.removeItem('token');
   }
 
+  mostrarUsers(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/mostrarUsers`);
+  }
+
   // Verifica se o token está presente e se é válido
   isAuthenticated(): boolean {
     const token = this.getToken();
