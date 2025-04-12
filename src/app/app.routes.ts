@@ -7,7 +7,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { RedirectGuard } from './guards/redirect.guard';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [RedirectGuard] }, // Verifica se está logado antes de ir para Home
+    // Verifica se está logado antes de ir para Home
+    { path: '', component: HomeComponent, canActivate: [RedirectGuard] }, 
     { path: 'login', component: LoginComponent, canActivate: [RedirectGuard] },
     { path: 'cadastro', component: CadastrarComponent, canActivate: [RedirectGuard] },
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
