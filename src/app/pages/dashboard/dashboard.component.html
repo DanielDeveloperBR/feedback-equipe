@@ -1,2 +1,44 @@
-<p>dashboard works!</p>
-<a href="#" (click)="logout()">Sair</a>
+<!-- Header do Dashboard -->
+<app-header></app-header>
+
+<!-- Layout Principal -->
+<div class="dashboard-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2>Dashboard</h2>
+        <ul>
+            <li><a routerLink="/dashboard">Visão Geral</a></li>
+            <li><a routerLink="/feedbacks">Feedbacks</a></li>
+            <li><a routerLink="/equipe">Equipe</a></li>
+            <li><a routerLink="/configuracoes">Configurações</a></li>
+        </ul>
+        <button (click)="logout()" class="logout-btn">Sair</button>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="dashboard-content">
+        <h1>Bem-vindo ao Dashboard!</h1>
+        
+        <!-- Estatísticas -->
+        <div class="stats">
+            <div class="card">
+                <h3>Feedbacks Recebidos</h3>
+                <p>150</p>
+            </div>
+            <div class="card">
+                <h3>Feedbacks Pendentes</h3>
+                <p>10</p>
+            </div>
+            <div class="card">
+                <h3>Satisfação Geral</h3>
+                <p>85%</p>
+            </div>
+        </div>
+
+        <!-- Gráficos -->
+        <div class="charts">
+            <canvas id="feedbackChart"></canvas>
+        </div>
+    </main>
+</div>
