@@ -1,0 +1,15 @@
+<div class="form-group text-center mb-5">
+  <h2 class="mb-4">Selecione o tipo</h2>
+
+  <div class="d-flex flex-wrap justify-content-center gap-2">
+    <label class="custom-radio-label flex-fill text-center m-1">
+      <input type="radio" name="cadastro" value="funcionario" (change)="onChange($event)" hidden>
+      Funcionário
+    </label>
+
+    <label class="custom-radio-label flex-fill text-center m-1">
+      <input type="radio" name="cadastro" value="empresa" (change)="onChange($event)" hidden>
+      Empresa
+    </label>
+  </div>
+</div>

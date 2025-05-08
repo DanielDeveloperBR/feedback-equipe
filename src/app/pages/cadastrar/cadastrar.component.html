@@ -1,3 +1,5 @@
+<app-selecionar-tipo (tipoSelecionado)="onTipoSelecionado($event)" />
+
 <app-form [formGroup]="registerForm" [fields]="
 {
   nome: {type: 'text', label: 'Nome', placeholder: 'Digite seu nome'},

@@ -1,0 +1,31 @@
+.custom-radio-label {
+    min-width: 150px; /* força largura mínima */
+    max-width: 200px; /* largura máxima para consistência */
+    padding: 12px 20px;
+    border: 2px solid #0d6efd;
+    border-radius: 50px;
+    color: #0d6efd;
+    font-weight: 600;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    display: inline-block;
+    flex-grow: 1; /* ajuda os botões a expandirem igualmente */
+  }
+  
+  .custom-radio-label:hover {
+    background-color: #e7f1ff;
+  }
+  
+  .custom-radio-label:has(input[type="radio"]:checked),
+  .custom-radio-label input[type="radio"]:checked ~ * {
+    background-color: #0d6efd;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(13, 110, 253, 0.3);
+  }
+  h2{
+    font-size: 1.4rem;
+  }

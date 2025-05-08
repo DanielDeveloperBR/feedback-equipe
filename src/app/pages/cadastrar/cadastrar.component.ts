@@ -3,15 +3,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormComponent } from "../../components/form/form.component";
+import { SelecionarTipoComponent } from '../../components/selecionar-tipo/selecionar-tipo.component';
 
 @Component({
   selector: 'app-cadastrar',
   templateUrl: './cadastrar.component.html',
   styleUrls: ['./cadastrar.component.css'],
-  imports: [FormComponent]
+  imports: [FormComponent, SelecionarTipoComponent]
 })
 export class CadastrarComponent implements OnInit {
   registerForm: FormGroup;
+  tipo: string | null = null; 
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.registerForm = this.fb.group({
@@ -21,15 +23,23 @@ export class CadastrarComponent implements OnInit {
     });
   }
 
+  onTipoSelecionado(tipo: string) {
+    this.tipo = tipo;
+  }
+
   ngOnInit(): void {}
 
-  // A função onSubmit agora não é chamada diretamente do FormComponent
   handleFormSubmit() {
+    if (!this.tipo) {
+      alert('Selecione se você é funcionário ou empresa antes de cadastrar!');
+      return;
+    }
  
     this.authService.register(
       this.registerForm.value.nome,
       this.registerForm.value.email,
-      this.registerForm.value.senha
+      this.registerForm.value.senha,
+      this.tipo
     ).subscribe({
       next: (res) => {
         alert('Cadastro realizado com sucesso!');
