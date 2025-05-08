@@ -1,35 +1,5 @@
 <app-header></app-header>
 <main class="flex flex-col items-center py-16">
-    <!-- Carrossel de Usuários -->
-    <section class="container my-5">
-        <h2 class="text-center mb-4 text-3xl font-bold">Nossos Usuários</h2>
-      
-        <div id="userCarousel" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div *ngFor="let user of usersList; let i = index" class="carousel-item" [class.active]="i === 0">
-              <div class="d-flex justify-content-center">
-                <div class="card text-center" style="width: 18rem;">
-                  <img src="https://via.placeholder.com/150" class="card-img-top rounded-circle mt-3" alt="Foto do usuário">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ user.nome }}</h5>
-                    <p class="card-text">{{ user.email }}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-      
-          <!-- Botões do carrossel -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#userCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#userCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Próximo</span>
-          </button>
-        </div>
-      </section>
       
     <!-- Imagem de título -->
     <section class="text-center mb-12 px-4">
