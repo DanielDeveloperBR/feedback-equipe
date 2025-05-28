@@ -3,5 +3,12 @@
 }
 
 a{
-    color: var(--textoLink);
+   color: var(--textoLink);
+    background-color: var(--fundoSecund);
 }
+@media (max-width: 768px) {
+    header .link-texto a {
+      background-color: transparent !important;
+    }
+  }
+  

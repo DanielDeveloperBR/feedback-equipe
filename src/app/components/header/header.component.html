@@ -9,8 +9,8 @@
 
         <!-- Botões LOGIN / CADASTRAR no desktop -->
         <div *ngIf="!isLoggedIn(); else loggedIn" class="hidden md:flex gap-2">
-            <a routerLink="/login" class="bg-blue-600 text-white py-2 px-4 rounded-md">Login</a>
-            <a routerLink="/cadastro" class="bg-yellow-500 text-white py-2 px-4 rounded-md">Cadastrar</a>
+            <a routerLink="/login" class=" text-white py-2 px-4 rounded-md">Login</a>
+            <a routerLink="/cadastro" class="text-white py-2 px-4 rounded-md">Cadastrar</a>
         </div>
 
         <!-- Botões quando logado no desktop -->
@@ -36,6 +36,5 @@
         <a href="/login" class="block py-2 border-b border-white w-full text-center text-info ">Login</a>
         <a href="/cadastro" class="block py-2 border-b border-white w-full text-center">Cadastrar</a>
     </div>
-
 
 </header>
