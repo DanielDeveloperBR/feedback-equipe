@@ -1,15 +1,23 @@
 <app-selecionar-tipo (tipoSelecionado)="onTipoSelecionado($event)" />
 
-<app-form [formGroup]="registerForm" [fields]="
-{
-  nome: {type: 'text', label: 'Nome', placeholder: 'Digite seu nome'},
-  senha: {type: 'password', label: 'Senha', placeholder: 'Digite sua senha'},
-  email: {type: 'email', label: 'Email', placeholder: 'Digite seu email'}
-}" submitButtonText="Cadastrar" (submitEvent)="handleFormSubmit()">
+<app-form 
+  [formGroup]="registerForm" [fields]='{
+    nome: {type: "text", label: "Nome", placeholder: "Digite seu nome"},
+    senha: {type: "password", label: "Senha", placeholder: "Digite sua senha"},
+    repetirSenha: {type: "password", label: "Repetir a senha", placeholder: "Digite novamente sua senha"},
+    email: {type: "email", label: "Email", placeholder: "Digite seu email"},
+    checarTermos: {
+      type: "checkbox",
+      label: "",
+      span: "<a href=\"/termos-de-uso\" target=\"_blank\">Aceito os termos de uso</a>"
+    }
+  }' 
+  submitButtonText="Cadastrar" 
+  (submitEvent)="handleFormSubmit()">
 </app-form>
 
 
-<a class="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-full text-x3 mx-auto"
+<a class="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-full text-x3 mx-auto mb-1"
   style="max-width: 400px;" href="/home">
   Voltar para o home
 </a>

@@ -12,14 +12,19 @@ import { SelecionarTipoComponent } from '../../components/selecionar-tipo/seleci
   imports: [FormComponent, SelecionarTipoComponent]
 })
 export class CadastrarComponent implements OnInit {
+goToTermos() {
+throw new Error('Method not implemented.');
+}
   registerForm: FormGroup;
-  tipo: string | null = null; 
+  tipo: string | null = null;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.registerForm = this.fb.group({
       nome: ['', Validators.required],
       senha: ['', [Validators.required, Validators.minLength(6)]],
-      email: ['', [Validators.required, Validators.email]]
+      repetirSenha: ['', [Validators.required, Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.email]],
+      checarTermos: [false, Validators.requiredTrue]
     });
   }
 
@@ -27,20 +32,24 @@ export class CadastrarComponent implements OnInit {
     this.tipo = tipo;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   handleFormSubmit() {
     if (!this.tipo) {
       alert('Selecione se você é funcionário ou empresa antes de cadastrar!');
       return;
     }
- 
-    this.authService.register(
-      this.registerForm.value.nome,
-      this.registerForm.value.email,
-      this.registerForm.value.senha,
-      this.tipo
-    ).subscribe({
+
+    if (this.registerForm.value.senha !== this.registerForm.value.repetirSenha) {
+      alert('As senhas não coincidem. Tente novamente.');
+      return;
+    }
+    if (this.registerForm.value.checarTermos === false) {
+      alert('Você deve aceitar os termos de uso para continuar.');
+      return;
+    }
+
+    this.authService.register(this.registerForm.value.nome, this.registerForm.value.email, this.registerForm.value.senha, this.tipo).subscribe({
       next: (res) => {
         alert('Cadastro realizado com sucesso!');
         this.router.navigate(['/login']);
