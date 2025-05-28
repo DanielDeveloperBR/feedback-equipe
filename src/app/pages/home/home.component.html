@@ -1,17 +1,20 @@
 <app-header></app-header>
-<main class="flex flex-col items-center py-16">
-      
-    <!-- Imagem de título -->
-    <section class="text-center mb-12 px-4">
-        <img src="titulo-plataforma.png" alt="IMG Plataforma de Feedback" class="mx-auto mb-6 w-full md:w-1/2">
-        <h1 class="text-4xl font-bold text-gray-800">Bem-vindo à Plataforma de Feedback para Equipes!</h1>
-        <p class="text-lg text-gray-600 mt-4">Melhore a comunicação e a performance da sua equipe com feedbacks
-            contínuos.</p>
-    </section>
+<main class="flex flex-col items-center justify-start">
 
+    <!-- Imagem de título -->
+    <section
+    class="inicio w-screen min-h-[600px] bg-cover bg-center bg-no-repeat flex items-center justify-center"
+    style="background-image: url('../assets/bgFeedback.png');">
+    <div class="text-center px-4">
+      <h1 class="text-4xl font-bold mb-4 drop-shadow">Bem-vindo à Plataforma de Feedback para Equipes!</h1>
+      <p class="text-xl drop-shadow">Melhore a comunicação e a performance da sua equipe com feedbacks contínuos.</p>
+    </div>
+  </section>
+  
+  
     <!-- Seção Como Funciona -->
     <section class="w-full max-w-5xl px-4 mb-12">
-        <h2 class="text-3xl font-semibold text-gray-800 mb-6">Como Funciona</h2>
+        <h2 class="text-3xl font-semibold text-gray-800 m-6 text-center">Como Funciona</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div class="bg-white p-6 rounded-lg shadow-md">
                 <h3 class="text-xl font-medium text-green-800">Enviar Feedback</h3>
@@ -28,7 +31,7 @@
                 <h3 class="text-xl font-medium text-green-800">Histórico de Feedbacks</h3>
                 <p class="text-gray-600 mt-4">Acesse todo o histórico de feedbacks para acompanhamento e melhorias.</p>
             </div>
-           
+
         </div>
     </section>
 
@@ -73,25 +76,29 @@
 
     <!-- Testemunhos -->
     <section class="w-full max-w-5xl px-4 mb-12">
-        <h2 class="text-3xl font-semibold text-gray-800 mb-6">O que Nossos Usuários Dizem</h2>
-        <div class="flex flex-wrap gap-6">
+        <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">O que Nossos Usuários Dizem</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Testemunho 1 -->
-            <div class="bg-white p-6 rounded-lg shadow-md w-full sm:w-1/2 lg:w-1/3">
-                <p class="text-gray-600 italic">"A plataforma transformou a forma como nossa equipe se comunica! Agora
-                    conseguimos dar feedbacks construtivos de maneira contínua."</p>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <p class="text-gray-600 italic">"A plataforma transformou a forma como nossa equipe se comunica!"</p>
                 <h4 class="mt-4 font-semibold text-green-800">João da Silva</h4>
                 <p class="text-gray-500">Gerente de Projetos</p>
             </div>
-
             <!-- Testemunho 2 -->
-            <div class="bg-white p-6 rounded-lg shadow-md w-full sm:w-1/2 lg:w-1/3">
-                <p class="text-gray-600 italic">"Adoramos o painel de gráficos de desempenho! Ele nos ajuda a ver de
-                    maneira clara onde estamos evoluindo."</p>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <p class="text-gray-600 italic">"Adoramos o painel de gráficos de desempenho!"</p>
                 <h4 class="mt-4 font-semibold text-green-800">Maria Oliveira</h4>
                 <p class="text-gray-500">Líder de Equipe</p>
             </div>
+            <!-- Testemunho 3 -->
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <p class="text-gray-600 italic">"Facilitou muito nossa rotina de feedbacks."</p>
+                <h4 class="mt-4 font-semibold text-green-800">Carlos Lima</h4>
+                <p class="text-gray-500">Analista de RH</p>
+            </div>
         </div>
     </section>
+
 
     <!-- Chamada para Ação -->
     <section class="w-full max-w-md text-center mb-12">
