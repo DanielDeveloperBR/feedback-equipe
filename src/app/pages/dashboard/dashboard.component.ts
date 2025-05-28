@@ -1,16 +1,13 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { SideBarComponent } from "../../components/side-bar/side-bar.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  styleUrl: './dashboard.component.css',
+  imports: [SideBarComponent, RouterModule]
 })
 export class DashboardComponent {
-  constructor(private router: Router, private authService: AuthService){}
-  logout(): void {
-    this.authService.logout();
-    this.router.navigate(['/login']); 
-  }
+
 }

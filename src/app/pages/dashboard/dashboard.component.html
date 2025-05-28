@@ -2,16 +2,7 @@
 <div class="dashboard-container">
     
     <!-- Sidebar -->
-    <aside class="sidebar">
-        <h2>Dashboard</h2>
-        <ul>
-            <li><a routerLink="/dashboard">Visão Geral</a></li>
-            <li><a routerLink="/feedbacks">Feedbacks</a></li>
-            <li><a routerLink="/equipe">Equipe</a></li>
-            <li><a routerLink="/configuracoes">Configurações</a></li>
-        </ul>
-        <button (click)="logout()" class="logout-btn">Sair</button>
-    </aside>
+    <app-side-bar></app-side-bar>
 
     <!-- Conteúdo Principal -->
     <main class="dashboard-content">
