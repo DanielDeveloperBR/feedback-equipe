@@ -60,4 +60,23 @@
     text-align: center;
     color: #777;
   }
-  
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+    color: #555;
+    justify-content: flex-start;
+  }
+  .checkbox-group span {
+    font-size: .7rem;
+    opacity: .7;
+    margin: 0;
+  }
+  .checkbox-group span:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }  
+  .checkbox-group input[type="checkbox"] {
+    width: 20px;
+    max-width: 100%;
+    margin-left: 6px;
+  }

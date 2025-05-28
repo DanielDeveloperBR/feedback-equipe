@@ -2,12 +2,32 @@
   <h2>{{ formTitle }}</h2>
 
   <div *ngFor="let fieldKey of objectKeys(fields)" class="form-group">
-    <label for="{{ fieldKey }}">{{ fields[fieldKey].label }}</label>
-    <input [id]="fieldKey"
-     [type]="fields[fieldKey].type"
-     [placeholder]="fields[fieldKey].placeholder"
-    
-      formControlName="{{ fieldKey }}" />
+
+    <!-- Se NÃO for checkbox, renderiza label e input normalmente -->
+    <ng-container *ngIf="fields[fieldKey].type !== 'checkbox'; else checkboxTemplate">
+      <label [for]="fieldKey">{{ fields[fieldKey].label }}</label>
+      <input [id]="fieldKey"
+             [type]="fields[fieldKey].type"
+             [placeholder]="fields[fieldKey].placeholder"
+             [formControlName]="fieldKey" />
+    </ng-container>
+
+    <!-- Template para campo do tipo checkbox -->
+    <ng-template #checkboxTemplate>
+      <div class="checkbox-group">
+        <!-- Span opcional com HTML, só se existir -->
+        <span *ngIf="fields[fieldKey].span"
+        [innerHTML]="fields[fieldKey].span"
+        class="checkbox-span">
+      </span>
+      <!-- Label do checkbox, se quiser deixar fora do span -->
+        <label [for]="fieldKey">
+          <input type="checkbox" [id]="fieldKey" [formControlName]="fieldKey" />
+        </label>
+
+      </div>
+    </ng-template>
+
   </div>
 
   <button type="submit" class="submit-btn">{{ submitButtonText }}</button>

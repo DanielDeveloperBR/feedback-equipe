@@ -10,7 +10,11 @@ import { CommonModule } from '@angular/common';
 })
 export class FormComponent implements OnInit {
   @Input() formTitle: string = '';  
-  @Input() fields: { [key: string]: { type: string, label: string, placeholder: string } } = {};  
+  @Input() fields: 
+  { 
+    [key: string]: { type: string, label: string, placeholder?: string, span?: string} 
+  } = {};
+  
   @Input() submitButtonText: string = '';  
   @Input() formGroup!: FormGroup;
   @Output() submitEvent = new EventEmitter<void>(); 
