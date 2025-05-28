@@ -18,6 +18,10 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/register`, { nome, email, senha, tipo });
   }
 
+  enviarFeedback(email: string, feedback: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/feedback`, { email, feedback });
+  }
+
   saveToken(token: string): void {
     sessionStorage.setItem('token', token);
   }
