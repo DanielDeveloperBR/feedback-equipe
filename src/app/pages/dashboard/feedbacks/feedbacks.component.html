@@ -1,0 +1,10 @@
+    <!-- Conteúdo Principal -->
+    <main class="dashboard-content">
+        <app-form [formGroup]="enviarFeedback" [fields]="
+        {
+        email: {type: 'email', label: 'Email', placeholder: 'Digite o email do usuário'},
+        feedback: {type: 'text', label: 'Feedback', placeholder: 'Escreva seu feedback'}
+        }" submitButtonText="Enviar" (submitEvent)="handleFormSubmit()">
+        </app-form>
+        <a class="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-full text-x3 mx-auto" style="max-width: 400px;" href="/dashboard">Voltar</a>
+    </main>
