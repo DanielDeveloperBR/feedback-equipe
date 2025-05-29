@@ -1,10 +1,62 @@
-<aside class="sidebar">
-    <h2>Dashboard</h2>
-    <ul>
-        <li><a routerLink="/dashboard">Visão Geral</a></li>
-        <li><a routerLink="/feedbacks">Feedbacks</a></li>
-        <li><a routerLink="/equipe">Equipe</a></li>
-        <li><a routerLink="/configuracoes">Configurações</a></li>
+<aside
+  class="sidebar-custom w-full md:w-[260px] max-h-[90vh] md:max-h-full h-auto md:h-screen overflow-y-auto p-4 flex flex-col justify-between shadow-md"
+>
+  <!-- Título: Sempre no topo -->
+  <div class="mb-6">
+    <div class="flex items-center justify-between md:justify-start md:gap-4">
+      <h2 class="text-2xl font-bold text-left">Dashboard</h2>
+
+      <!-- Botão Hamburguer (somente em telas pequenas) -->
+      <button
+        class="md:hidden focus:outline-none"
+        (click)="toggleMenu()"
+        aria-label="Menu"
+      >
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Menu centralizado (somente em telas médias ou maiores) -->
+  <div class="flex-1 flex items-center justify-center">
+    <ul
+      [ngClass]="{ 'hidden': !menuOpen, 'flex': menuOpen }"
+      class="flex-col items-center space-y-3 text-center md:flex md:items-center md:justify-center md:text-center"
+    >
+      <li><a routerLink="/dashboard" class="nav-item">Visão Geral</a></li>
+      <li><a routerLink="/dashboard/feedbacks" class="nav-item">Feedbacks</a></li>
+      <li><a routerLink="/dashboard/equipe" class="nav-item">Equipe</a></li>
+      <li><a routerLink="/dashboard/configuracoes" class="nav-item">Configurações</a></li>
+
+      <!-- Sair (somente em telas pequenas) -->
+      <li class="block md:hidden w-full">
+        <button
+          (click)="logout()"
+          class="logout-btn mt-4"
+        >
+          Sair
+        </button>
+      </li>
     </ul>
-    <button (click)="logout()" class="logout-btn">Sair</button>
+  </div>
+
+  <!-- Botão Sair (somente em telas médias ou maiores) -->
+  <div class="hidden md:block">
+    <button
+      (click)="logout()"
+      class="logout-btn mt-6"
+    >
+      Sair
+    </button>
+  </div>
 </aside>
