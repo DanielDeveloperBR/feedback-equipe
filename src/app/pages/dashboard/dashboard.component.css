@@ -3,7 +3,6 @@
     height: 100vh;
     font-family: 'Segoe UI', sans-serif;
   }
-  
 
   /* Conteúdo Principal */
   .dashboard-content {
@@ -19,44 +18,11 @@
     color: #2a2a72;
   }
   
-  /* Estatísticas */
-  .stats {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 30px;
-  }
-  
-  .card {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    text-align: center;
-    flex: 1 1 30%;
-    min-width: 220px;
-  }
-  
-  .card h3 {
-    color: #555;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-  }
-  
-  .card p {
-    font-size: 1.5rem;
-    color: #009ffd;
-    font-weight: bold;
-  }
-  
-  /* Gráficos */
-  .charts {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  }
-
   a:hover{
     cursor: pointer;
   }
+  @media (max-width: 768px) {
+    .dashboard-container {
+      flex-direction: column;
+    }
+}
