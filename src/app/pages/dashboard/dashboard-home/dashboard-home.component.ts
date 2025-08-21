@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './dashboard-home.component.css'
 })
 export class DashboardHomeComponent {
+  feedbackRecebidos: number = 0;
+  constructor(){}
 
 }

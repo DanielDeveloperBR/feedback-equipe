@@ -14,21 +14,4 @@ import { CommonModule } from '@angular/common';
 export class HomeComponent {
   usersList: any[] = []
   constructor(public users: AuthService) { }
-
-  ngOnInit(){
-  this.mostrarUsers()
-}
-
-mostrarUsers() {
-  this.users.mostrarUsers().subscribe({
-    next: (data: any) => {
-      this.usersList = data.sucess
-    },
-    error: (err) => {
-      console.error("Erro ao buscar usuários:", err);
-    }
-  });
-}
-
-  
 }

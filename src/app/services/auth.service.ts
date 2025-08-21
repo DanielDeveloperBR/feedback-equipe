@@ -22,6 +22,11 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/feedback`, { email, feedback });
   }
 
+  getFeedbacks() {
+    return this.http.get<any[]>(`${this.apiUrl}/feedbacks`);
+  }
+  
+
   saveToken(token: string): void {
     sessionStorage.setItem('token', token);
   }
@@ -33,10 +38,6 @@ export class AuthService {
   logout(): void {
     
     sessionStorage.removeItem('token');
-  }
-
-  mostrarUsers(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/mostrarUsers`);
   }
 
   // Verifica se o token está presente e se é válido

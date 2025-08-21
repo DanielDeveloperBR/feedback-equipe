@@ -1,0 +1,11 @@
+/* Para garantir que todos os cards tenham a mesma altura mínima */
+.card-fixed-height {
+    min-height: 500px; /* Ajuste conforme o tamanho desejado */
+  }
+  
+  /* Limitar texto com "Ver mais" */
+  .feedback-text {
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+  
