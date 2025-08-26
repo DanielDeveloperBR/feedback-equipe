@@ -1,69 +1,79 @@
 <div class="mt-8">
-    <h1 class="text-2xl text-center md:text-3xl font-bold text-[#2a2a72] mb-8">
-      Lista de Feedbacks
-    </h1>
-  
-    <div *ngIf="feedbacks.length > 0; else semFeedback"
-         class="grid gap-4 mb-10"
-         style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-  
-      <div *ngFor="let fb of feedbacks; let i = index"
-           class="bg-white p-5 rounded-xl shadow-md flex flex-col transition-transform hover:scale-[1.02]"
-           [class.col-span-full]="
-              fb.feedback.length > 200 || 
-              feedbacks.length === 1 ||
-              (feedbacks.length === 2 && i === 1)
-           ">
-  
-        <!-- Cabeçalho -->
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-10 h-10 flex items-center justify-center rounded-full bg-[#2a2a72] text-white font-bold">
-            {{ fb.nome.charAt(0).toUpperCase() }}
-          </div>
-          <div>
-            <p class="font-semibold text-[#2a2a72]">{{ fb.nome }}</p>
-            <p class="text-xs text-gray-500">{{ fb.email }}</p>
-          </div>
-        </div>
-  
-        <!-- Texto -->
-        <p class="text-gray-700 overflow-hidden transition-all duration-300 ease-in-out"
-           [style.maxHeight]="fb.expanded ? '500px' : '72px'">
-          {{ fb.feedback }}
-        </p>
-  
-        <!-- Botão ver mais -->
-        <button *ngIf="fb.feedback.length > 120"
-                class="text-sm text-blue-600 hover:underline mt-2 self-start"
-                (click)="fb.expanded = !fb.expanded">
-          {{ fb.expanded ? 'Ver menos' : 'Ver mais' }}
-        </button>
-  
-        <!-- Rodapé -->
-        <p class="text-xs text-gray-400 mt-3">
-          Enviado em: {{ fb.criado_em | date:'dd/MM/yyyy HH:mm' }}
-        </p>
-      </div>
-    </div>
-  
-    <ng-template #semFeedback>
-      <p class="text-gray-500 text-center">Nenhum feedback recebido ainda.</p>
-    </ng-template>
-  </div>
-  
+  <h1 class="text-2xl text-center md:text-3xl font-bold text-[#2a2a72] mb-8">
+    Lista de Feedbacks
+  </h1>
 
-  <!-- Enviar feedback -->
-  
+  <div *ngIf="feedbacks.length > 0; else semFeedback" class="grid gap-4 mb-10"
+    style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+
+    <div *ngFor="let fb of feedbacks; let i = index"
+      class="bg-white p-5 rounded-xl shadow-md flex flex-col transition-transform hover:scale-[1.02]"
+      [class.col-span-full]=" fb.feedback.length > 200 || feedbacks.length === 1 ||(feedbacks.length === 2 && i === 1)">
+
+      <!-- Cabeçalho -->
+      <div>
+        <p class="font-semibold text-[#2a2a72]">{{ fb.nome }}</p>
+        <p class="text-xs text-gray-500">{{ fb.email }}</p>
+
+        <!-- Avaliação em estrelas -->
+        <div class="flex">
+          <ng-container *ngFor="let star of [1,2,3,4,5]">
+            <svg *ngIf="star <= fb.avaliacao" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
+              class="w-5 h-5 text-yellow-400">
+              <path d="M12 .587l3.668 7.429 8.2 1.193-5.934 5.782 
+                 1.402 8.174L12 18.896l-7.336 3.869 
+                 1.402-8.174-5.934-5.782 8.2-1.193z" 
+                 />
+            </svg>
+            <svg *ngIf="star > fb.avaliacao" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" class="w-5 h-5 text-gray-300">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l2.356 7.24h7.615c.969 0 1.371 1.24.588 1.81l-6.162 4.477 2.356 7.24c.3.921-.755 1.688-1.54 1.118L12 18.896l-6.162 4.816c-.784.57-1.838-.197-1.54-1.118l2.356-7.24 -6.162-4.477c-.783-.57-.38-1.81.588-1.81h7.615l2.356-7.24z" 
+                />
+            </svg>
+          </ng-container>
+        </div>
+      </div>
+
+      <!-- Texto -->
+      <p class="text-gray-700 overflow-hidden transition-all duration-300 ease-in-out"
+        [style.maxHeight]="fb.expanded ? '500px' : '72px'">
+        {{ fb.feedback }}
+      </p>
+
+      <!-- Botão ver mais -->
+      <button *ngIf="fb.feedback.length > 120" class="text-sm text-blue-600 hover:underline mt-2 self-start"
+        (click)="fb.expanded = !fb.expanded">
+        {{ fb.expanded ? 'Ver menos' : 'Ver mais' }}
+      </button>
+
+      <!-- Rodapé -->
+      <p class="text-xs text-gray-400 mt-3">
+        Enviado em: {{ fb.criado_em | date:'dd/MM/yyyy HH:mm' }}
+      </p>
+    </div>
+  </div>
+
+  <ng-template #semFeedback>
+    <p class="text-gray-500 text-center">Nenhum feedback recebido ainda.</p>
+  </ng-template>
+</div>
+
+
+<!-- Enviar feedback -->
+
 <main class="dashboard-content">
-    <h1 class="text-2xl text-center md:text-3xl font-bold text-[#2a2a72] mb-8">
-        Lista de Feedbacks
-      </h1>
-    <app-form [formGroup]="enviarFeedback" [fields]="
-        {
-        email: {type: 'email', label: 'Email', placeholder: 'Digite o email do usuário'},
-        feedback: {type: 'text', label: 'Feedback', placeholder: 'Escreva seu feedback'}
-        }" submitButtonText="Enviar" (submitEvent)="handleFormSubmit()">
-    </app-form>
-    <a class="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-full text-x3 mx-auto"
-        style="max-width: 400px;" href="/dashboard">Voltar</a>
+  <h1 class="text-2xl text-center md:text-3xl font-bold text-[#2a2a72] mb-8 mt-4">
+    Enviar Feedback
+  </h1>
+  <app-form [formGroup]="enviarFeedback" [fields]="{
+    email: { type: 'email', label: 'Email', placeholder: 'Digite o email do usuário' },
+    feedback: { type: 'text', label: 'Feedback', placeholder: 'Escreva seu feedback' },
+    avaliacao: { type: 'rating', label: '' }
+  }" submitButtonText="Enviar" (submitEvent)="handleFormSubmit()">
+
+  </app-form>
+
+  <a class="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-full text-x3 mx-auto"
+    style="max-width: 400px;" href="/dashboard">Voltar</a>
 </main>
