@@ -1,5 +1,28 @@
-<main class="dashboard-content">
+<div class="p-6">
+  <h2 class="text-2xl font-bold mb-4">Minha Equipe</h2>
 
-    <a class="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-full text-x3 mx-auto"
-        style="max-width: 400px;" href="/dashboard">Voltar</a>
-</main>
+  <button class="bg-blue-600 text-white px-4 py-2 rounded-lg mb-4">
+    Adicionar Funcionário
+  </button>
+
+  <table class="w-full border-collapse">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="p-2 text-left">Nome</th>
+        <th class="p-2 text-left">Email</th>
+        <th class="p-2 text-left">Cargo</th>
+        <th class="p-2 text-left">Avaliação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let funcionario of funcionarios" class="border-b">
+        <td class="p-2">{{ funcionario.nome }}</td>
+        <td class="p-2">{{ funcionario.email }}</td>
+        <td class="p-2">{{ funcionario.cargo }}</td>
+        <td class="p-2">
+          <button class="bg-green-600 text-white px-3 py-1 rounded">Avaliar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
