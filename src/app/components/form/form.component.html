@@ -3,30 +3,45 @@
 
   <div *ngFor="let fieldKey of objectKeys(fields)" class="form-group">
 
-    <!-- Se NÃO for checkbox, renderiza label e input normalmente -->
-    <ng-container *ngIf="fields[fieldKey].type !== 'checkbox'; else checkboxTemplate">
+    <!-- Renderiza inputs normais (exceto checkbox e rating) -->
+    <ng-container *ngIf="fields[fieldKey].type !== 'checkbox' && fields[fieldKey].type !== 'rating'">
       <label [for]="fieldKey">{{ fields[fieldKey].label }}</label>
-      <input [id]="fieldKey"
-             [type]="fields[fieldKey].type"
-             [placeholder]="fields[fieldKey].placeholder"
-             [formControlName]="fieldKey" />
+      <input
+        [id]="fieldKey"
+        [type]="fields[fieldKey].type"
+        [placeholder]="fields[fieldKey].placeholder"
+        [formControlName]="fieldKey"
+      />
     </ng-container>
 
-    <!-- Template para campo do tipo checkbox -->
-    <ng-template #checkboxTemplate>
+    <!-- Caso especial: campo rating -->
+    <ng-container *ngIf="fields[fieldKey].type === 'rating'">
+      <div class="star-container">
+        <button
+          *ngFor="let star of [1,2,3,4,5]"
+          type="button"
+          class="star-btn"
+          [class.active]="star <= formGroup.get(fieldKey)?.value"
+          (click)="setRating(fieldKey, star)"
+        >
+          {{ star <= formGroup.get(fieldKey)?.value ? '★' : '☆' }}
+        </button>
+      </div>
+
+      <input type="hidden" [formControlName]="fieldKey" />
+    </ng-container>
+
+    <!-- Template para checkbox -->
+    <ng-container *ngIf="fields[fieldKey].type === 'checkbox'">
       <div class="checkbox-group">
-        <!-- Span opcional com HTML, só se existir -->
-        <span *ngIf="fields[fieldKey].span"
-        [innerHTML]="fields[fieldKey].span"
-        class="checkbox-span">
-      </span>
-      <!-- Label do checkbox, se quiser deixar fora do span -->
+        <span *ngIf="fields[fieldKey].span" [innerHTML]="fields[fieldKey].span" class="checkbox-span"></span>
+
         <label [for]="fieldKey">
           <input type="checkbox" [id]="fieldKey" [formControlName]="fieldKey" />
+          {{ fields[fieldKey].label }}
         </label>
-
       </div>
-    </ng-template>
+    </ng-container>
 
   </div>
 

@@ -9,25 +9,25 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
-  @Input() formTitle: string = '';  
-  @Input() fields: 
-  { 
-    [key: string]: { type: string, label: string, placeholder?: string, span?: string} 
-  } = {};
-  
-  @Input() submitButtonText: string = '';  
+  @Input() formTitle: string = '';
+  @Input() fields:
+    {
+      [key: string]: { type: string, label: string, placeholder?: string, span?: string }
+    } = {};
+
+  @Input() submitButtonText: string = '';
   @Input() formGroup!: FormGroup;
-  @Output() submitEvent = new EventEmitter<void>(); 
+  @Output() submitEvent = new EventEmitter<void>();
 
   ngOnInit() {
-    if (!this.formGroup) { 
+    if (!this.formGroup) {
       this.initializeForm();
     }
   }
 
   private initializeForm() {
     const group: any = {};
-    
+
     Object.keys(this.fields).forEach(fieldKey => {
       group[fieldKey] = new FormControl('', Validators.required);
     });
@@ -37,6 +37,13 @@ export class FormComponent implements OnInit {
 
   onSubmit() {
     this.submitEvent.emit();
+  }
+
+  setRating(fieldKey: string, value: number) {
+    const control = this.formGroup.get(fieldKey);
+    if (control) {
+      control.setValue(value);
+    }
   }
 
   objectKeys(obj: any) {
